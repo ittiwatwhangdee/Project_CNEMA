@@ -1,0 +1,109 @@
+<ons-page id="search">
+    <div class="tabbar tabbar--top tabbar--top-border">
+        <label class="tabbar__item tabbar--top-border__item">
+            <input type="radio" name="top-tabbar-b" checked="checked">
+            <button class="tabbar__button tabbar--top-border__button">
+                All
+            </button>
+        </label>
+
+        <label class="tabbar__item tabbar--top-border__item">
+            <input type="radio" name="top-tabbar-b">
+            <button class="tabbar__button tabbar--top-border__button">
+                Action
+            </button>
+        </label>
+
+        <label class="tabbar__item tabbar--top-border__item">
+            <input type="radio" name="top-tabbar-b">
+            <button class="tabbar__button tabbar--top-border__button">
+                Animation
+            </button>
+        </label>
+
+        <label class="tabbar__item tabbar--top-border__item">
+            <input type="radio" name="top-tabbar-b">
+            <button class="tabbar__button tabbar--top-border__button">
+                Comedies
+            </button>
+        </label>
+
+    </div>
+
+    <p style="text-align: center; margin-top: 10px;">
+        <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)">
+        </ons-search-input>
+
+    </p>
+
+    <div class="movie_list">
+        Top Rated
+        <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/aquaman.jpg" onclick="location.href='detail.html'">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/t2.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/venom.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/joker.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/tenet.jpg">
+            </ons-carousel-item>
+        </ons-carousel>
+    </div>
+
+    <br>
+    </br>
+
+    <div class="movie_list">
+        Top Popular
+        <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Extraction.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/1917.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Fast8.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/The witcher.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Avatar2.jpg">
+            </ons-carousel-item>
+        </ons-carousel>
+    </div>
+
+    <br>
+    </br>
+
+    <div class="movie_list">
+        Top Director
+        <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/nolan.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/bay.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/steven.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/jame.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/steven2.jpg">
+            </ons-carousel-item>
+        </ons-carousel>
+    </div>
+
+
+</ons-page>
