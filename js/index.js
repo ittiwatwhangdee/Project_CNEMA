@@ -3,7 +3,14 @@ firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.
     var email = user.email;
-    console.log(`User with email ${email} signed in`);
+    displayName = user.displayName;
+    email = user.email;
+    photoUrl = user.photoURL;
+    console.log(displayName, email, photoUrl);
+
+    $("#username").text(email);
+    $("#displayname").text(displayName);
+    $("#photo").attr("src",photoUrl);
   } else {
     // User is signed out.
     window.location.href = "login.html";
