@@ -11,6 +11,11 @@ firebase.auth().onAuthStateChanged(function (user) {
     // var providerData = user.providerData;
 
     console.log(email);
+    displayName = user.displayName;
+    photoUrl = user.photoURL;
+    console.log(displayName, email, photoUrl);
+
+
     document.querySelector('#myNavigator').replacePage('tabs.html');
   } else {
     document.querySelector('#myNavigator').replacePage('views/signin.html');
@@ -71,26 +76,54 @@ document.addEventListener('init', function (event) {
     }
   }
 
+  if (page.id === "profile") {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        // var displayName = user.displayName;
+        var email = user.email;
+        // var emailVerified = user.emailVerified;
+        // var photoURL = user.photoURL;
+        // var isAnonymous = user.isAnonymous;
+        // var uid = user.uid;
+        // var providerData = user.providerData;
+
+        console.log(email);
+        displayName = user.displayName;
+        photoUrl = user.photoURL;
+        console.log(displayName, email, photoUrl);
+        $("#username").text(email);
+        $("#displayname").text(displayName);
+        $("#photo").attr("src",photoUrl);
+
+
+      }
+    });
+
+  }
+
+
+
   console.log(page.id);
-        if (page.id === 'Home') {
-            $('#back').hide();
-            page.querySelector('#johnwick').onclick = function() {
-                document.querySelector('#myNavigator').pushPage('views/detail.html');
+  if (page.id === 'Home') {
+    $('#back').hide();
+    page.querySelector('#johnwick').onclick = function () {
+      document.querySelector('#myNavigator').pushPage('views/detail.html');
 
-            };
-            page.querySelector('#wonderwoman').onclick = function() {
-                document.querySelector('#myNavigator').pushPage('views/detail2.html');
-            };
-            page.querySelector('#toystory').onclick = function() {
-                document.querySelector('#myNavigator').pushPage('views/detail3.html');
-            };
-        } else if (page.id === 'johnwick' || page.id === 'wonderwoman' || page.id === 'toystory') {
-            $('#back').show();
-            document.querySelector('ons-back-button').onclick = function(event) {
-                document.querySelector('#myNavigator').popPage();
-            };
+    };
+    page.querySelector('#wonderwoman').onclick = function () {
+      document.querySelector('#myNavigator').pushPage('views/detail2.html');
+    };
+    page.querySelector('#toystory').onclick = function () {
+      document.querySelector('#myNavigator').pushPage('views/detail3.html');
+    };
+  } else if (page.id === 'johnwick' || page.id === 'wonderwoman' || page.id === 'toystory') {
+    $('#back').show();
+    document.querySelector('ons-back-button').onclick = function (event) {
+      document.querySelector('#myNavigator').popPage();
+    };
 
-        }
+  }
 
 
 });
