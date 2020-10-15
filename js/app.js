@@ -36,7 +36,6 @@ document.addEventListener('init', function (event) {
     });
   }
 
-
   if (page.id === "home") {
     db.collection("movies").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
@@ -52,7 +51,6 @@ document.addEventListener('init', function (event) {
         page.querySelector('#carousel').appendChild(onsItem);
       });
     });
-
   }
 
   if (page.id === "home") {
