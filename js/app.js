@@ -43,7 +43,7 @@ document.addEventListener('init', function (event) {
         console.log(doc.id, " => ", doc.data());
         var item = `<ons-carousel-item>
         <div style="text-align: center;">
-          <img src="${doc.data().posterURL}" style="width:100%;">
+          <img src="${doc.data().posterURL}" style="width:100%;" id="johnwick" >
         </div>
       </ons-carousel-item>`
         var onsItem = document.createElement('ons-carousel-item');
@@ -59,13 +59,13 @@ document.addEventListener('init', function (event) {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
         var item = `<div class="movie_list">
-        Top Rated <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
+        <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
         <ons-carousel-item modifier="nodivider">
-          <img src="${doc.data().posterURL}" style="width:100%;">
+      <img src="${doc.data().posterURL}" style="width:100%;">
       </ons-carousel-item></div>`
         var onsItem = document.createElement('ons-carousel-item');
         onsItem.innerHTML = item;
-        page.querySelector('#carousel').appendChild(onsItem);
+        page.querySelector('#carousel2').appendChild(onsItem);
       });
     });
 
@@ -117,7 +117,6 @@ document.addEventListener('init', function (event) {
     });
 
   }
-
 
 
   console.log(page.id);

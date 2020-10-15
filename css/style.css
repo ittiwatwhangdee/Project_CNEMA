@@ -79,14 +79,19 @@
   }
 
   .movie_list {
-    margin: 10px;
-    height: 130px;
-    padding-top: 30px;
+    margin: 5px;
+    height: 200px;
+    padding-top: 1px;
   }
 
   .movie_list img {
     width: 90%
   }  
+
+  .top {
+    font-size: 18px;
+    margin-top: -10px;
+  }
 
 /*-----------หน้า Movie_Details-----------*/
 
