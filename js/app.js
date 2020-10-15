@@ -55,6 +55,24 @@ document.addEventListener('init', function (event) {
 
   }
 
+  if (page.id === "home") {
+    db.collection("toprate").get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        var item = `<div class="movie_list">
+        Top Rated <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
+        <ons-carousel-item modifier="nodivider">
+          <img src="${doc.data().posterURL}" style="width:100%;">
+      </ons-carousel-item></div>`
+        var onsItem = document.createElement('ons-carousel-item');
+        onsItem.innerHTML = item;
+        page.querySelector('#carousel').appendChild(onsItem);
+      });
+    });
+
+  }
+
   if (page.id === "signin") {
     document.getElementById("signinbutton").onclick = function () {
       var username = document.querySelector("#username").value;
