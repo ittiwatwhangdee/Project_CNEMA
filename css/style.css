@@ -90,7 +90,6 @@
 
   .top {
     font-size: 18px;
-    margin-top: -10px;
   }
 
 /*-----------หน้า Movie_Details-----------*/
@@ -276,4 +275,30 @@
     background-color: #5B7BD5;
     background-image: linear-gradient(#5B7BD5, #4864B1);
 }
+/*---------หน้า account------------*/
+#signout {
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #008CBA;
 
+}
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#photo{
+    margin: auto;
+    border-radius: 50px;
+}
+
+#displayname{
+    font-size: 20px;
+}
