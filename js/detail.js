@@ -53,8 +53,8 @@ document.addEventListener('init', function(event) {
       element.appendChild(ons.createElement(
         '<ons-carousel-item>' +
           '<div class="story">' +
-          '<div class="story-thumbnail-wraper unread"><img class="story-thumbnail" src="assets/img/profile-image-0' + (i+1) + '.png" onclick="readStory(this)"></div>' +
-          '<p>david_graham</p>' +
+          '<div class="story-thumbnail-wraper unread"><img class="story-thumbnail" src="assets/img/tenet.jpg' + (i+1) + '.png" onclick="readStory(this)"></div>' +
+          '<p>fhutzchx</p>' +
           '</div>' +
         '</ons-carousel-item>'
       ));
