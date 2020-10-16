@@ -1,58 +1,64 @@
-/* Chat containers */
-body {
-    margin: auto;
-   
-  }
-  .container {
-    border: 2px solid black;
-    background-color: white;
-    border-radius: 5px;
-    padding: 10px;
-    margin: auto ;
-  }
+#logo1 {
+  padding: 2px;
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+}
+.center title {
+background-color:black ;
 
-/* Darker chat container */
-.darker {
-    border: 2px solid black;
-    background-color: white;
-    border-radius: 5px;
-    padding: 10px;
-    margin: auto ;
 }
 
-/* Clear floats */
+/* Chat containers */
+body {
+  margin: 0 auto;
+  max-width: 400%;
+  padding: 0 20px;
+}
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
 .container::after {
   content: "";
   clear: both;
   display: flex;
 }
 
-/* Style images */
 .container img {
   float: left;
-  max-width: 30px;
-  width: 50%;
-  margin-right: 50px;
+  max-width: 15%;
+  width: 100%;
+  margin-right: 20px;
   border-radius: 50%;
 }
 
-/* Style the right image */
-.container img.right1 {
+.container img.right {
   float: right;
-  margin-left: 50px;
-  margin-right:50px;
+  margin-left: 100px;
+  margin-right:0;
 }
 
-/* Style time text */
 .time-right {
   float: right;
-  color:black;
+  color: #aaa;
 }
 
-/* Style time text */
 .time-left {
   float: left;
-  color:grey;
+  color: #999;
 }
 /*chat message*/
 
@@ -76,7 +82,7 @@ body {
 
 /* Full-width textarea */
 .form-container textarea {
-  width: 50%;
+  width: 200%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
@@ -98,7 +104,7 @@ body {
   padding: 16px 20px;
   border: none;
   cursor: pointer;
-  width: 50%;
+  width: 200%;
   margin-bottom:10px;
   opacity: 0.8;
 }
