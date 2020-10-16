@@ -50,12 +50,13 @@ document.addEventListener('init', function (event) {
         console.log(doc.id, " => ", doc.data());
         var item = `<ons-carousel-item>
         <div style="text-align: center;">
-          <img src="${doc.data().posterURL}" style="width:100%;" id="johnwick" >
+          <img src="${doc.data().posterURL}" style="width:100%;" id="johnwick" onclick="location.href='views/detail.html'">
         </div>
       </ons-carousel-item>`
         var onsItem = document.createElement('ons-carousel-item');
         onsItem.innerHTML = item;
         page.querySelector('#carousel').appendChild(onsItem);
+        
       });
     });
   }
