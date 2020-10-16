@@ -1,7 +1,3 @@
-$(function() {
- 
-})
-
 /*
 *  This event listener will populate the top of the home screen with user stories when the page is initialized.
 *  It uses the generateStoryBubbles function to do so.
