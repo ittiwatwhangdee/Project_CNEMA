@@ -22,6 +22,13 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
+document.addEventListener("prechange", function (event) {
+  if (event.tabItem) {
+    document.querySelector(
+      "ons-toolbar .center title bg-title"
+    ).innerHTML = event.tabItem.getAttribute("label");
+  }
+});
 
 
 document.addEventListener('init', function (event) {
