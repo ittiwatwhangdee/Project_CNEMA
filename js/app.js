@@ -50,7 +50,7 @@ document.addEventListener('init', function (event) {
         console.log(doc.id, " => ", doc.data());
         var item = `<ons-carousel-item>
         <div style="text-align: center;">
-          <img src="${doc.data().posterURL}" style="width:100%;" id="johnwick" onclick="location.href='views/detail.html'">
+          <img src="${doc.data().posterURL}" style="width:100%;" onclick="location.href='views/detail.html'">
         </div>
       </ons-carousel-item>`
         var onsItem = document.createElement('ons-carousel-item');
@@ -60,6 +60,7 @@ document.addEventListener('init', function (event) {
       });
     });
   }
+
 
   if (page.id === "home") {
     db.collection("toprate").get().then(function (querySnapshot) {
