@@ -1,6 +1,10 @@
+body{
+background-color: black;
+}
+
 #logo1 {
-  padding: 2px;
-  width: 40%;
+  padding: 5px;
+  width: 250px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -10,13 +14,14 @@
 background-color:black ;
 
 }
+.toolbar__left,
+.toolbar__right,
+.tabbar {
+    background-color: #000000;
+}
 
 /* Chat containers */
-body {
-  margin: 0 auto;
-  max-width: 100%;
-  padding: 0 20px;
-}
+
 
 .container {
   border: 2px solid #dedede;
@@ -64,11 +69,11 @@ body {
 
 /* The popup chat - hidden by default */
 .form-popup {
-  display: flex;
+  display: block;
   position: fixed;
   bottom: 0;
   right: 15px;
-  border: 3px solid #f1f1f1;
+  border: 3px solid gray;
   z-index: 15;
 }
 
@@ -76,7 +81,7 @@ body {
 .form-container {
   max-width: 50%;
   padding: 10px;
-  background-color: white;
+  background-color: black;
   
 }
 
@@ -88,7 +93,7 @@ body {
   border: none;
   background: #f1f1f1;
   resize: 20px;
-  min-height: 100px;
+  min-height: 50px;
 }
 
 /* When the textarea gets focus, do something */
@@ -104,7 +109,7 @@ body {
   padding: 50px 50px;
   border: none;
   cursor: pointer;
-  width: 200%;
+  width: 197%;
   margin-bottom:10px;
   opacity: 10;
 }
