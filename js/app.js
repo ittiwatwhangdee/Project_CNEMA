@@ -46,13 +46,10 @@ document.addEventListener('init', function (event) {
   if (page.id === "home") {
     db.collection("movies").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        var item = `<ons-carousel-item>
-        <div style="text-align: center;">
-          <img src="${doc.data().posterURL}" style="width:100%;" onclick="location.href='views/detail.html'">
-        </div>
-      </ons-carousel-item>`
+        var item = `
+        <ons-carousel-item style="text-align: center;" id="${doc.data().title}" onclick="MoviesDetail(this.id)"> 
+        <img src="${doc.data().posterURL}" style="width:100%;">
+        </ons-carousel-item>`
         var onsItem = document.createElement('ons-carousel-item');
         onsItem.innerHTML = item;
         page.querySelector('#carousel').appendChild(onsItem);
@@ -60,6 +57,23 @@ document.addEventListener('init', function (event) {
       });
     });
   }
+  function MoviesDetail(id){
+    db.collection("movies").get().then(function(querySnapshot){
+      querySnapshot.forEach(function (doc) {
+        if(doc.data().title == id){
+          const detail =
+          `
+          ${data().title}
+          `
+          $("#title").append(detail);
+
+        }
+        
+      });
+
+    });
+  }
+
 
 
   if (page.id === "home") {
@@ -151,63 +165,3 @@ document.addEventListener('init', function (event) {
 
 
 });
-
-
-$("#search").click(function(){
-
-  $("#search_show").empty();
-  $("#sug_show").empty();
-  $("#search_show").append("ผลลัพธ์การค้นหา:");
-  var search_input = document.getElementById("search_input").value;
-  console.log(search_input);
-
-  db.collection("movies").get().then((querySnapshot) => {
-
-    querySnapshot.forEach((doc) => {
-
-      if ( `${doc.data().star}`>4){
-        var star = `
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        `
-        }else if (`${doc.data().star}`>3){
-
-          var star = `
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          `
-        }else if (`${doc.data().star}`>2){
-
-          var star = `
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          `
-        }else if (`${doc.data().star}`>1){
-
-          var star = `
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          `
-        }
-
-      }
-    )
-
-
-  }
-
-)
-
-})
