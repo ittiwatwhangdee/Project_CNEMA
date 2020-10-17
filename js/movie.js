@@ -15,3 +15,4 @@ if (page.id === "detail") {
     });
   });
 }
+

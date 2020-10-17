@@ -153,8 +153,8 @@ document.addEventListener('init', function (event) {
 });
 
 
-$("#search").click(function(){
-
+$("#search").click(function () {
+   
   $("#search_show").empty();
   $("#sug_show").empty();
   $("#search_show").append("ผลลัพธ์การค้นหา:");
@@ -165,49 +165,67 @@ $("#search").click(function(){
 
     querySnapshot.forEach((doc) => {
 
-      if ( `${doc.data().star}`>4){
-        var star = `
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        <ons-icon style="color: red" icon="fa-star"></ons-icon>
-        `
-        }else if (`${doc.data().star}`>3){
+      var titleforcheck = `${doc.data().title}`;
+      // console.log(titleforcheck);
+      var yearforcheck = `${doc.data().year}`;
+      // console.log(yearforcheck);
 
-          var star = `
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          `
-        }else if (`${doc.data().star}`>2){
+      var regexNumber = /\d/;
+      var regexLetter = /[a-zA-z]/;
 
-          var star = `
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          `
-        }else if (`${doc.data().star}`>1){
+      if (regexLetter.test(search_input)) {
 
-          var star = `
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          `
+        if (titleforcheck.indexOf(search_input) != -1) {
+          var row = `
+          <ons-row style="margin: 5px;">
+          <ons-col class="text-center">
+          <img src="${doc.data().posterURL}" width="50%" style="margin: 5px 5px;" alt="">
+          </ons-col>
+  
+          <ons-col>
+          <p style="font-size:10px">${doc.data().title} (${doc.data().year})</p>
+          </ons-col>
+        
+          </ons-row>`
+
+
         }
 
+
+      } else if (regexNumber.test(search_input)) {
+
+        if (search_input == yearforcheck) {
+          var row = `
+          <ons-row style="margin: 5px;">
+          <ons-col class="text-center">
+          <img src="${doc.data().posterURL}" width="50%" style="margin: 5px 5px;" alt="">
+          </ons-col>
+  
+          <ons-col>
+          <p style="font-size:10px">${doc.data().title} (${doc.data().year})</p>
+          </ons-col>
+        
+          </ons-row>`
+
+        }
+        // else{
+        //     $("#search_show").empty();
+        //     $("#search_show").append("ไม่พบหนังในปีที่ค้นหา ลองค้นหาใหม่อีกครั้ง");
+
+        // }
+
+      } else {
+        $("#search_show").empty();
+        $("#search_show").append("ใส่ข้อมูลเป็น ตัวอักษร หรือ ตัวเลข เท่านั้น!!");
+
       }
-    )
+
+      $("#search_show").append(row);
+
+    });
+
+  });
+
+});
 
 
-  }
-
-)
-
-})

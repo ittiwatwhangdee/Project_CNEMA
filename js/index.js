@@ -38,3 +38,5 @@ db.collection("movies").get().then((querySnapshot) => {
     $("#list").append(row);
   });
 });
+
+
