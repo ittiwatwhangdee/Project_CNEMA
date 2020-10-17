@@ -14,8 +14,63 @@
     firebase.analytics();
     var db = firebase.firestore();
     
-    $(function(){
-   
 
-})
+    
+    $("#search").click(function(){
+
+      $("#search_show").empty();
+      $("#sug_show").empty();
+      $("#search_show").append("ผลลัพธ์การค้นหา:");
+      var search_input = document.getElementById("search_input").value;
+      console.log(search_input);
+
+      db.collection("movies").get().then((querySnapshot) => {
+
+        querySnapshot.forEach((doc) => {
+
+          if ( `${doc.data().star}`>4){
+            var star = `
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            `
+            }else if (`${doc.data().star}`>3){
+
+              var star = `
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              `
+            }else if (`${doc.data().star}`>2){
+
+              var star = `
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              `
+            }else if (`${doc.data().star}`>1){
+
+              var star = `
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              <ons-icon style="color: red" icon="fa-star"></ons-icon>
+              `
+            }
+
+          }
+        })
+
+
+      }
+
+    })
+  
     
