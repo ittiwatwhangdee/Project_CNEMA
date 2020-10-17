@@ -275,9 +275,16 @@
     background-color: #5B7BD5;
     background-image: linear-gradient(#5B7BD5, #4864B1);
 }
-.loginBtn--search {
-  font-family: "Roboto", Roboto, arial, sans-serif;
-  background: black;
+.searchBtn {
+  border: none;
+    color: white;
+    padding: 7px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+    background-color: black;
 }
 /*---------หน้า account------------*/
 #signout {

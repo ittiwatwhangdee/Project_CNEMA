@@ -46,13 +46,10 @@ document.addEventListener('init', function (event) {
   if (page.id === "home") {
     db.collection("movies").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        var item = `<ons-carousel-item>
-        <div style="text-align: center;">
-          <img src="${doc.data().posterURL}" style="width:100%;" onclick="location.href='views/detail.html'">
-        </div>
-      </ons-carousel-item>`
+        var item = `
+        <ons-carousel-item style="text-align: center;" id="${doc.data().title}" onclick="MoviesDetail(this.id)"> 
+        <img src="${doc.data().posterURL}" style="width:100%;">
+        </ons-carousel-item>`
         var onsItem = document.createElement('ons-carousel-item');
         onsItem.innerHTML = item;
         page.querySelector('#carousel').appendChild(onsItem);
@@ -60,6 +57,23 @@ document.addEventListener('init', function (event) {
       });
     });
   }
+  function MoviesDetail(id){
+    db.collection("movies").get().then(function(querySnapshot){
+      querySnapshot.forEach(function (doc) {
+        if(doc.data().title == id){
+          const detail =
+          `
+          ${data().title}
+          `
+          $("#title").append(detail);
+
+        }
+        
+      });
+
+    });
+  }
+
 
 
   if (page.id === "home") {
@@ -153,79 +167,6 @@ document.addEventListener('init', function (event) {
 });
 
 
-$("#search").click(function () {
-   
-  $("#search_show").empty();
-  $("#sug_show").empty();
-  $("#search_show").append("ผลลัพธ์การค้นหา:");
-  var search_input = document.getElementById("search_input").value;
-  console.log(search_input);
 
-  db.collection("movies").get().then((querySnapshot) => {
-
-    querySnapshot.forEach((doc) => {
-
-      var titleforcheck = `${doc.data().title}`;
-      // console.log(titleforcheck);
-      var yearforcheck = `${doc.data().year}`;
-      // console.log(yearforcheck);
-
-      var regexNumber = /\d/;
-      var regexLetter = /[a-zA-z]/;
-
-      if (regexLetter.test(search_input)) {
-
-        if (titleforcheck.indexOf(search_input) != -1) {
-          var row = `
-          <ons-row style="margin: 5px;">
-          <ons-col class="text-center">
-          <img src="${doc.data().posterURL}" width="50%" style="margin: 5px 5px;" alt="">
-          </ons-col>
-  
-          <ons-col>
-          <p style="font-size:10px">${doc.data().title} (${doc.data().year})</p>
-          </ons-col>
-        
-          </ons-row>`
-
-
-        }
-
-
-      } else if (regexNumber.test(search_input)) {
-
-        if (search_input == yearforcheck) {
-          var row = `
-          <ons-row style="margin: 5px;">
-          <ons-col class="text-center">
-          <img src="${doc.data().posterURL}" width="50%" style="margin: 5px 5px;" alt="">
-          </ons-col>
-  
-          <ons-col>
-          <p style="font-size:10px">${doc.data().title} (${doc.data().year})</p>
-          </ons-col>
-        
-          </ons-row>`
-
-        }
-        // else{
-        //     $("#search_show").empty();
-        //     $("#search_show").append("ไม่พบหนังในปีที่ค้นหา ลองค้นหาใหม่อีกครั้ง");
-
-        // }
-
-      } else {
-        $("#search_show").empty();
-        $("#search_show").append("ใส่ข้อมูลเป็น ตัวอักษร หรือ ตัวเลข เท่านั้น!!");
-
-      }
-
-      $("#search_show").append(row);
-
-    });
-
-  });
-
-});
 
 

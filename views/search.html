@@ -33,7 +33,7 @@
     <p style="text-align: center; margin-top: 10px;">
         <ons-search-input placeholder="Search" id="search_input"></ons-search-input>
         </ons-search-input>
-        <button type="button" id="search" class="loginBtn loginBtn--search">Search</button>
+        <button type="button" id="search" class="searchBtn">Search</button>
         
     </p>
 
@@ -45,17 +45,47 @@ $("#search").click(function () {
    
    $("#search_show").empty();
    $("#sug_show").empty();
-   $("#search_show").append("Result:");
+   $("#search_show").append("");
    var search_input = document.getElementById("search_input").value;
    console.log(search_input);
  
-   db.collection("movies").get().then((querySnapshot) => {
+   db.collection("search").get().then((querySnapshot) => {
  
      querySnapshot.forEach((doc) => {
+
+    if (`${doc.data().star}`>4){
+        var star = `
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
+    }else if(`${doc.data().star}`>3){
+        var star = `
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
+    }else if(`${doc.data().star}`>2){
+        var star = `
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
+    }else if(`${doc.data().star}`>1){
+        var star = `
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
+    }
  
-       var titleforcheck = `${doc.data().title}`;
+       var titleforcheck = `${doc.data().name}`;
        // console.log(titleforcheck);
-       var yearforcheck = `${doc.data().year}`;
+       var yearforcheck = `${doc.data().years}`;
        // console.log(yearforcheck);
  
        var regexNumber = /\d/;
@@ -67,11 +97,17 @@ $("#search").click(function () {
            var row = `
            <ons-row style="margin: 5px;">
            <ons-col class="text-center">
-           <img src="${doc.data().posterURL}" width="70%" style="margin: 5px 5px;" alt="">
+           <img src="${doc.data().poster}" width="70%" style="margin: 5px 5px;" alt="">
            </ons-col>
    
            <ons-col>
-           <p style="font-size:15px">${doc.data().title} (${doc.data().year}) </p>
+           <p style="font-size:15px">${doc.data().name} (${doc.data().years}) </p>
+           <p style="font-size:15px">`+ star +`${doc.data().plot}</p>
+           <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
+            <ons-icon style="color: red" icon="fa-star"></ons-icon>
            </ons-col>
          
            </ons-row>`
@@ -86,11 +122,11 @@ $("#search").click(function () {
            var row = `
            <ons-row style="margin: 5px;">
            <ons-col class="text-center">
-           <img src="${doc.data().posterURL}" width="80%" style="margin: 5px 5px;" alt="">
+           <img src="${doc.data().poster}" width="80%" style="margin: 5px 5px;" alt="">
            </ons-col>
    
            <ons-col>
-           <p style="font-size:10px">${doc.data().title} (${doc.data().year}) (${doc.data().year})</p>
+           <p style="font-size:10px">${doc.data().name} (${doc.data().years}) (${doc.data().years})</p>
            </ons-col>
          
            </ons-row>`
