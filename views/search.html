@@ -33,81 +33,87 @@
     <p style="text-align: center; margin-top: 10px;">
         <ons-search-input placeholder="Search" id="search_input"></ons-search-input>
         </ons-search-input>
-        <button type="button" id="search" class="btn btn-warning">Search</button>
+        <button type="button" id="search" class="loginBtn loginBtn--search">Search</button>
+        
     </p>
 
     <div id="sug_show"></div>
     <div id="search_show"></div>
 
-
-    <div class="movie_list">
-        Top Rated
-        <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/aquaman.jpg" >
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/t2.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/venom.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/joker.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/tenet.jpg">
-            </ons-carousel-item>
-        </ons-carousel>
-    </div>
-
-    <br>
-    </br>
-
-    <div class="movie_list">
-        Top Popular
-        <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/Extraction.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/1917.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/Fast8.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/The witcher.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/Avatar2.jpg">
-            </ons-carousel-item>
-        </ons-carousel>
-    </div>
-
-    <br>
-    </br>
-
-    <div class="movie_list">
-        Top Director
-        <ons-carousel auto-refresh swipeable overscrollable item-width="150px">
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/nolan.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/bay.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/steven.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/jame.jpg">
-            </ons-carousel-item>
-            <ons-carousel-item modifier="nodivider">
-                <img src="assets/img/steven2.jpg">
-            </ons-carousel-item>
-        </ons-carousel>
-    </div>
-
-
+<script>
+$("#search").click(function () {
+   
+   $("#search_show").empty();
+   $("#sug_show").empty();
+   $("#search_show").append("Result:");
+   var search_input = document.getElementById("search_input").value;
+   console.log(search_input);
+ 
+   db.collection("movies").get().then((querySnapshot) => {
+ 
+     querySnapshot.forEach((doc) => {
+ 
+       var titleforcheck = `${doc.data().title}`;
+       // console.log(titleforcheck);
+       var yearforcheck = `${doc.data().year}`;
+       // console.log(yearforcheck);
+ 
+       var regexNumber = /\d/;
+       var regexLetter = /[a-zA-z]/;
+ 
+       if (regexLetter.test(search_input)) {
+ 
+         if (titleforcheck.indexOf(search_input) != -1) {
+           var row = `
+           <ons-row style="margin: 5px;">
+           <ons-col class="text-center">
+           <img src="${doc.data().posterURL}" width="70%" style="margin: 5px 5px;" alt="">
+           </ons-col>
+   
+           <ons-col>
+           <p style="font-size:15px">${doc.data().title} (${doc.data().year}) </p>
+           </ons-col>
+         
+           </ons-row>`
+ 
+ 
+         }
+ 
+ 
+       } else if (regexNumber.test(search_input)) {
+ 
+         if (search_input == yearforcheck) {
+           var row = `
+           <ons-row style="margin: 5px;">
+           <ons-col class="text-center">
+           <img src="${doc.data().posterURL}" width="80%" style="margin: 5px 5px;" alt="">
+           </ons-col>
+   
+           <ons-col>
+           <p style="font-size:10px">${doc.data().title} (${doc.data().year}) (${doc.data().year})</p>
+           </ons-col>
+         
+           </ons-row>`
+ 
+         }
+         // else{
+         //     $("#search_show").empty();
+         //     $("#search_show").append("ไม่พบหนังในปีที่ค้นหา ลองค้นหาใหม่อีกครั้ง");
+ 
+         // }
+ 
+       } else {
+         $("#search_show").empty();
+         $("#search_show").append("");
+ 
+       }
+ 
+       $("#search_show").append(row);
+ 
+     });
+ 
+   });
+ 
+ });
+</script>
 </ons-page>
