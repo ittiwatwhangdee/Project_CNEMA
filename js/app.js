@@ -200,8 +200,9 @@ function moviesDetail(id) {
         const result = `
             <div class="text-center">
               <div class="trailer">
-              <ons-icon icon="fa-play-circle"></ons-icon>
-            <video style="width: 100%;height: auto;" src="${doc.data().vdo}" autoplay muted loop></video>
+            <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style="width: 100%;height: auto;"
+            data-setup="{}">
+            <source src="${doc.data().vdo}" type="video/mp4" />
             </div>
             <div class="container">
                 <div> 
@@ -226,7 +227,7 @@ function moviesDetail(id) {
             </div>
           <br>
             <div class="movie_list">
-        Similar Movies
+        <b><p>Similar Movies</p></b>
         <ons-carousel auto-refresh swipeable overscrollable item-width="110px">
             <ons-carousel-item modifier="nodivider">
                 <img src="assets/img/Avatar2.jpg">
