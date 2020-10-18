@@ -201,7 +201,7 @@ function moviesDetail(id) {
             <div class="text-center">
               <div class="trailer">
             <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style="width: 100%;height: auto;"
-            data-setup="{}">
+            data-setup="{}" muted>
             <source src="${doc.data().vdo}" type="video/mp4" />
             </div>
             <div class="container">
