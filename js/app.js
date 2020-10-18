@@ -200,8 +200,8 @@ function moviesDetail(id) {
         const result = `
             <div class="text-center">
               <div class="trailer">
-              <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style="width: 100%;height: auto;"
-              data-setup="{}" muted>
+              <video id="my-video" class="video-js" controls preload="auto"  style="width: 100%;height: auto;"
+              data-setup="{}" poster="${doc.data().poster}">
               <source src="${doc.data().vdo}" type="video/mp4" />
               </div>
               <br>
