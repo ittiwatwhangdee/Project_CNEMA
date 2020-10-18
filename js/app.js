@@ -66,7 +66,7 @@ document.addEventListener('init', function (event) {
     db.collection("movies").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
         var item = `
-        <ons-carousel-item style="text-align: center;" id="${doc.data().title}" onclick="MoviesDetail(this.id)"> 
+        <ons-carousel-item style="text-align: center;" id="${doc.data().title}" onclick="moviesDetail(this.id)"> 
         <img src="${doc.data().posterURL}" style="width:100%;">
         </ons-carousel-item>`
         var onsItem = document.createElement('ons-carousel-item');
@@ -79,7 +79,11 @@ document.addEventListener('init', function (event) {
   }
 
   })
+  
 
+ 
+  
+  
   
   if (page.id === "home") {
     db.collection("toprate").get().then(function (querySnapshot) {
@@ -145,6 +149,7 @@ document.addEventListener('init', function (event) {
     });
 
   }
+});
   /*
 // movie_details.html
 function MoviesDetail(id) {
@@ -230,9 +235,39 @@ function goBack() {
 
 }*/
 
-});
 
 
+function moviesDetail(id){
+  db.collection("movies").get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+     if(doc.data().title == id){
+          const result = `
+            <div class="text-center">
+            <img src="${doc.data().posterURL}" style="padding-top :20px; width:50%;">
+            </div>
+            <div class="container">
+                <div>
+                  <div style="color:#33ccff; font-size:20px; margin-top:10px;">
+                  <b> ${doc.data.title}</b></div>
+
+                  <div class="row" style="color: grey; font-size:16px; margin-top: 5px;">
+                      <div class="col-8">${doc.data().type}</div>
+                      <div class="col-8">${doc.data().detail}</div>
+                  
+                  </div>
+                  <div style ="color: white;font-size:16px; margin-top: 5px;">
+                  ${doc.data().shortstory}</div>
+                </div>
+            </div>
+          `
+          $("#moviedetail").append(result)
+     }
+      
+
+    });
+  });
+  document.querySelector('#myNavigator').pushPage('views/moviedetail.html');
+}
 
 
 
