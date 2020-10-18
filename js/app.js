@@ -80,11 +80,6 @@ document.addEventListener('init', function (event) {
 
   })
 
-
-
-
-
-
   if (page.id === "home") {
     db.collection("toprate").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
