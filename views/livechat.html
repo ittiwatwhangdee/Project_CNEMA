@@ -14,8 +14,8 @@
         
         <ons-toolbar>
             <div class="center title bg-title">
-                <a href="/index.html">Home</a>
-              <img id="logo1" src="/assets/img/CNEMA7.png" >
+                <a href="/index.html" style="font-size: 30px;" style="color: purple;">Home</a>
+              <a href="/index.html"><img id="logo1" src="/assets/img/CNEMA7.png" ></a>
             </div>
           </ons-toolbar>
           <br>
@@ -33,7 +33,7 @@
     <ons-list-item>
         <div class="container darker">
             <img src="/assets/img/chat2.jpg" alt="Avatar" class="right" style="width:100%;">
-            <p>Hello.What problem happened?</p>
+            <p style="color: white;">Hello.What problem happened?</p>
             <span class="time-left">11:20</span>
         </div>
     </ons-list-item>
@@ -49,7 +49,7 @@
     <ons-list-item>
         <div class="container darker">
             <img src="/assets/img/chat2.jpg" alt="Avatar" class="right" style="width:100%;">
-            <p>Yes, but it takes time to process.</p>
+            <p style="color: white;">Yes, but it takes time to process.</p>
             <span class="time-left">11:30</span>
         </div>
     </ons-list-item>
@@ -64,7 +64,7 @@
     <ons-list-item>
         <div class="container darker">
             <img src="/assets/img/chat2.jpg" alt="Avatar" class="right" style="width:100%;">
-            <p>About 2 weeks</p>
+            <p style="color: white;">About 2 weeks</p>
             <span class="time-left">11:40</span>
         </div>
     </ons-list-item>
@@ -80,7 +80,7 @@
     <ons-list-item>
         <div class="container darker">
             <img src="/assets/img/chat2.jpg" alt="Avatar"  class="right" style="width:100%;">
-            <p>No problem!!</p>
+            <p style="color: white;">No problem!!</p>
             <span class="time-left">11:42</span>
         </div>
     </ons-list-item>
@@ -90,13 +90,15 @@
 <br>
 
 <div class="chat-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
+
+    <form  class="form-container">
 
         
         <textarea placeholder=" message.." name="msg" required></textarea>
-
-        <button type="submit" class="btn">Send</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        
+        <button type="submit" class="btn" style="font-size: 30px;">Send</button>
+        
+      <a href="/index.html">  <button type="button" class="btn cancel" style="font-size: 30px;">Close</button></a>
     </form>
 </div>
     
