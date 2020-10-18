@@ -1,3 +1,19 @@
+var firebaseConfig = {
+  apiKey: "AIzaSyD3CA8uNNLYKTiLda76DJyi0qXBWIJpljw",
+  authDomain: "cnema-c284d.firebaseapp.com",
+  databaseURL: "https://cnema-c284d.firebaseio.com",
+  projectId: "cnema-c284d",
+  storageBucket: "cnema-c284d.appspot.com",
+  messagingSenderId: "677283409519",
+  appId: "1:677283409519:web:7778c3d67f4ac1bfb8279a",
+  measurementId: "G-E9RPXMD7HD"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var db = firebase.firestore();
+
 // App logic.
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -43,25 +59,28 @@ document.addEventListener('init', function (event) {
     });
   }
 
+
+  //home
+  $(function () {
   if (page.id === "home") {
     db.collection("movies").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        var item = `<ons-carousel-item>
-        <div style="text-align: center;">
-          <img src="${doc.data().posterURL}" style="width:100%;" onclick="location.href='views/detail.html'">
-        </div>
-      </ons-carousel-item>`
+        var item = `
+        <ons-carousel-item style="text-align: center;" id="${doc.data().title}" onclick="MoviesDetail(this.id)"> 
+        <img src="${doc.data().posterURL}" style="width:100%;">
+        </ons-carousel-item>`
         var onsItem = document.createElement('ons-carousel-item');
         onsItem.innerHTML = item;
         page.querySelector('#carousel').appendChild(onsItem);
         
+
       });
     });
   }
 
+  })
 
+  
   if (page.id === "home") {
     db.collection("toprate").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
@@ -119,7 +138,7 @@ document.addEventListener('init', function (event) {
         console.log(displayName, email, photoUrl);
         $("#username").text(email);
         $("#displayname").text(displayName);
-        $("#photo").attr("src",photoUrl);
+        $("#photo").attr("src", photoUrl);
 
 
       }
@@ -151,3 +170,8 @@ document.addEventListener('init', function (event) {
 
 
 });
+
+
+
+
+
