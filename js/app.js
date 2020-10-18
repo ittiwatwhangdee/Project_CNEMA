@@ -199,11 +199,14 @@ function moviesDetail(id) {
        if (doc.data().title == id) {
         const result = `
             <div class="text-center">
-            <img src="${doc.data().trailer}" style="padding-top :10px; width:100%; ">
+              <div class="trailer">
+              <ons-icon icon="fa-play-circle"></ons-icon>
+            <video style="width: 100%;height: auto;" src="${doc.data().vdo}" autoplay muted loop></video>
             </div>
             <div class="container">
                 <div> 
                 <div style="color:black; font-size:30px; margin-top:10px; text-align: left;">
+                <br>
                   <b> ${doc.data().title}</b></div>
                 <div class="row" style="color: grey; font-size:16px; margin-top: 5px; text-align: left; display: flex;">
                 <div class="col-4" style="padding-right :10px;">`+ star +`</div>
