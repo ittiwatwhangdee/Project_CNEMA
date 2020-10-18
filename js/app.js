@@ -151,7 +151,7 @@ document.addEventListener('init', function (event) {
 function moviesDetail(id) {
   db.collection("movies").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
-      
+
       if (doc.data().rating == 5) {
         var star = ` 
          <ons-icon style="color: black" icon="fa-star"></ons-icon>
@@ -160,7 +160,7 @@ function moviesDetail(id) {
           <ons-icon style="color: black" icon="fa-star"></ons-icon>
           <ons-icon style="color: black" icon="fa-star"></ons-icon>
           `
-       
+
       } else if (doc.data().rating == 4) {
         var star = ` 
          <ons-icon style="color: black" icon="fa-star"></ons-icon>
@@ -168,7 +168,7 @@ function moviesDetail(id) {
           <ons-icon style="color: black" icon="fa-star"></ons-icon>
           <ons-icon style="color: black" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
-        
+
       } else if (doc.data().rating == 3) {
         var star = ` 
          <ons-icon style="color: black" icon="fa-star"></ons-icon>
@@ -176,7 +176,7 @@ function moviesDetail(id) {
           <ons-icon style="color: black" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
-        
+
       } else if (doc.data().rating == 2) {
         var star = ` 
          <ons-icon style="color: black" icon="fa-star"></ons-icon>
@@ -184,19 +184,19 @@ function moviesDetail(id) {
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
-       
-      } else if (doc.data().rating == 1){
+
+      } else if (doc.data().rating == 1) {
         var star = ` 
          <ons-icon style="color: black" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>
           <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
-      
+
       }
 
 
-       if (doc.data().title == id) {
+      if (doc.data().title == id) {
         const result = `
             <div class="text-center">
               <div class="trailer">
@@ -209,14 +209,11 @@ function moviesDetail(id) {
                 <br>
                   <b> ${doc.data().title}</b></div>
                 <div class="row" style="color: grey; font-size:16px; margin-top: 5px; text-align: left; display: flex;">
-                <div class="col-4" style="padding-right :10px;">`+ star +`</div>
+                <div class="col-4" style="padding-right :10px;">`+ star + `</div>
                 <div class="col-4" style="padding-right :10px;">${doc.data().year}</div>
                 <div class="col-4" style="padding-right :10px;" >${doc.data().type}</div>
                 <div class="col-4">${doc.data().time}</div>
-          
                 </div>
-          
-
                   <div style ="color: black;font-size:16px; margin-top: 5px; text-align: left;">
                   ${doc.data().shortstory}</div> 
                   
@@ -225,9 +222,30 @@ function moviesDetail(id) {
                   
                   <div style ="color: grey; font-size:14px; margin-top:10px; text-align: left;">
                   <b>Director: ${doc.data().director}</b></div>
-               
                 </div>
             </div>
+          <br>
+            <div class="movie_list">
+        Similar Movies
+        <ons-carousel auto-refresh swipeable overscrollable item-width="110px">
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Avatar2.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Fast8.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/The witcher.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/aquaman.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Extraction.jpg">
+            </ons-carousel-item>
+        </ons-carousel>
+    </div>
+
           `
         $("#moviedetail").append(result)
       }
