@@ -33,9 +33,8 @@
 
     <p style="text-align: center; margin-top: 10px;">
         <ons-search-input placeholder="Search" id="search_input"></ons-search-input>
-        </ons-search-input>
         <button type="button" id="search" class="searchBtn">Search</button>
-        
+        </ons-search-input>
     </p>
 
     <div id="sug_show"></div>
@@ -94,20 +93,17 @@ $("#search").click(function () {
  
          if (titleforcheck.indexOf(search_input) != -1) {
            var row = `
-           <ons-row style="margin: 5px;">
-           <ons-col class="text-center">
-           <img src="${doc.data().poster}" width="70%" style="margin: 5px 5px;" alt="">
-           </ons-col>
-   
-           <ons-col>
-           <p style="font-size:18px">${doc.data().name} (${doc.data().years}) </p>
-           <p style="font-size:15px">${doc.data().plot}</p>
-           <p style="font-size:15px">`+ star +`</p>
-           </ons-col>
-         
-           </ons-row>`
- 
- 
+
+           <ons-list-item>
+            <div class="left">
+            <img class ="imglike" src="${doc.data().poster}">
+            </div>
+            <div class="center">
+             <span class="list-item__title">${doc.data().name} (${doc.data().years}) </span><span class="list-item__subtitle">${doc.data().plot}</span>
+             <p style="font-size:15px">`+ star +`</p>
+             </div>
+            </ons-list-item>
+           `
          }
  
  
