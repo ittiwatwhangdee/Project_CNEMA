@@ -219,7 +219,7 @@ function moviesDetail(id) {
         Director: ${doc.data().director}
         </div>
     </div>
-    <br><br>
+    <br><br><br>
     <div class="movie_list">
         Similar Movies
         <ons-carousel auto-refresh swipeable overscrollable item-width="110px">
