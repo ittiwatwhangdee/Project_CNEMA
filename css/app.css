@@ -32,8 +32,8 @@ background-color:black ;
 }
 
 .darker {
-  border-color: #ccc;
-  background-color: #ddd;
+  border-color: white;
+  background-color: black;
 }
 
 .container::after {
@@ -63,7 +63,7 @@ background-color:black ;
 
 .time-left {
   float: left;
-  color: #999;
+  color: white;
 }
 /*chat message*/
 
@@ -89,11 +89,11 @@ background-color:black ;
 .form-container textarea {
   width: 185%;
   padding: 30px;
-  margin: 5px 0 22px 0;
+  margin: 5px 0 20px 0;
   border: none;
   background: #f1f1f1;
-  resize: 20px;
-  min-height: 50px;
+  resize: 50px;
+  min-height: 70px;
 }
 
 /* When the textarea gets focus, do something */
@@ -104,7 +104,7 @@ background-color:black ;
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #0066FF;
+  background-color: #4d4dff;
   color: white;
   padding: 50px 50px;
   border: none;

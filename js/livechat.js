@@ -1,3 +1,4 @@
+
 function closeForm() {
-    document.getElementById("myForm").style.display = "none";
+  var button = document.getElementById("button").style.display = "close";
   }
