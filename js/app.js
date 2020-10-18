@@ -62,29 +62,24 @@ document.addEventListener('init', function (event) {
 
   //home
   $(function () {
-  if (page.id === "home") {
-    db.collection("movies").get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        var item = `
+    if (page.id === "home") {
+      db.collection("movies").get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          var item = `
         <ons-carousel-item style="text-align: center;" id="${doc.data().title}" onclick="moviesDetail(this.id)"> 
         <img src="${doc.data().posterURL}" style="width:100%;">
         </ons-carousel-item>`
-        var onsItem = document.createElement('ons-carousel-item');
-        onsItem.innerHTML = item;
-        page.querySelector('#carousel').appendChild(onsItem);
-        
+          var onsItem = document.createElement('ons-carousel-item');
+          onsItem.innerHTML = item;
+          page.querySelector('#carousel').appendChild(onsItem);
 
+
+        });
       });
-    });
-  }
+    }
 
   })
-  
 
- 
-  
-  
-  
   if (page.id === "home") {
     db.collection("toprate").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
@@ -150,124 +145,126 @@ document.addEventListener('init', function (event) {
 
   }
 });
-  /*
-// movie_details.html
-function MoviesDetail(id) {
-  db.collection("movies").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      if (doc.data().title == id) {
-      
 
-        const show_pic =
+
+
+function moviesDetail(id) {
+  db.collection("movies").get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+
+      if (doc.data().rating == 5) {
+        var star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
           `
-          <img src="${doc.data().posterURL}"alt="" width="60%">
-       
-        `
-        $("#show_pic").append(show_pic)
 
-        $("#movie_title").append(doc.data().title)
-        $("#movie_year").append(doc.data().year)
-        $(".movie_synopsis").append(doc.data().shortstory)
-        $(".movie_cast").append(doc.data().cast)
-        var s = doc.data().rating;
-        if (s < 5) {
-          const star = ` 
-         <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
-          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
-          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
-          ${s / 2}`
-          $(".stars").append(star)
-        } else if (5 < s && s < 7) {
-          const star = ` 
-         <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
-          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
-          ${s / 2}`
-          $(".stars").append(star)
-        } else if (7 < s && s < 9) {
-          const star = ` 
-         <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
-          ${s / 2}`
-          $(".stars").append(star)
-        } else if (9 < s && s < 10) {
-          const star = ` 
-         <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          <ons-icon style="color: red" icon="fa-star"></ons-icon>
-          ${s / 2}`
-          $(".stars").append(star)
-        }
-        $("#movie_time").append(doc.data().time)
+      } else if (doc.data().rating == 4) {
+        var star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
 
-        db.collection("movies").get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            const result5 =
-              `<ons-carousel-item modifier="nodivider" id="${doc.data().title}" >
-                <img src="${doc.data().posterURL}">
-              </ons-carousel-item>`
-      
-              $("#list-movie-similar").append(result5)
-            
-          });
-        });
+      } else if (doc.data().rating == 3) {
+        var star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
+
+      } else if (doc.data().rating == 2) {
+        var star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
+
+      } else if (doc.data().rating == 1) {
+        var star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
 
       }
 
 
-    });
-  });
-  document.querySelector('#myNavigator').pushPage('views/moviedetail.html');
-}
-
-function goBack() {
-
-  document.querySelector('#myNavigator').popPage()
-
-}*/
-
-
-
-function moviesDetail(id){
-  db.collection("movies").get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-     if(doc.data().title == id){
-          const result = `
+      if (doc.data().title == id) {
+        const result = `
             <div class="text-center">
-            <img src="${doc.data().posterURL}" style="padding-top :20px; width:50%;">
+              <div class="trailer">
+              <ons-icon icon="fa-play-circle"></ons-icon>
+            <video style="width: 100%;height: auto;" src="${doc.data().vdo}" autoplay muted loop></video>
             </div>
             <div class="container">
-                <div>
-                  <div style="color:#33ccff; font-size:20px; margin-top:10px;">
-                  <b> ${doc.data.title}</b></div>
-
-                  <div class="row" style="color: grey; font-size:16px; margin-top: 5px;">
-                      <div class="col-8">${doc.data().type}</div>
-                      <div class="col-8">${doc.data().detail}</div>
+                <div> 
+                <div style="color:black; font-size:30px; margin-top:10px; text-align: left;">
+                <br>
+                  <b> ${doc.data().title}</b></div>
+                <div class="row" style="color: grey; font-size:16px; margin-top: 5px; text-align: left; display: flex;">
+                <div class="col-4" style="padding-right :10px;">`+ star + `</div>
+                <div class="col-4" style="padding-right :10px;">${doc.data().year}</div>
+                <div class="col-4" style="padding-right :10px;" >${doc.data().type}</div>
+                <div class="col-4">${doc.data().time}</div>
+                </div>
+                  <div style ="color: black;font-size:16px; margin-top: 5px; text-align: left;">
+                  ${doc.data().shortstory}</div> 
                   
-                  </div>
-                  <div style ="color: white;font-size:16px; margin-top: 5px;">
-                  ${doc.data().shortstory}</div>
+                  <div style ="color: grey; font-size:14px; margin-top:10px; text-align: left;">
+                  <b>Cast: ${doc.data().cast}</b></div>
+                  
+                  <div style ="color: grey; font-size:14px; margin-top:10px; text-align: left;">
+                  <b>Director: ${doc.data().director}</b></div>
                 </div>
             </div>
+          <br>
+            <div class="movie_list">
+        Similar Movies
+        <ons-carousel auto-refresh swipeable overscrollable item-width="110px">
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Avatar2.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Fast8.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/The witcher.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/aquaman.jpg">
+            </ons-carousel-item>
+            <ons-carousel-item modifier="nodivider">
+                <img src="assets/img/Extraction.jpg">
+            </ons-carousel-item>
+        </ons-carousel>
+    </div>
+
           `
-          $("#moviedetail").append(result)
-     }
-      
+        $("#moviedetail").append(result)
+      }
 
     });
   });
   document.querySelector('#myNavigator').pushPage('views/moviedetail.html');
 }
 
+document.addEventListener('init', function (event) {
+  var page = event.target;
+
+  if (page.id === 'page1') {
+    page.querySelector('#push-button').onclick = function () {
+      document.querySelector('#myNavigator').pushPage('index.html', { data: { title: 'Page 2' } });
+    };
+  } else if (page.id === 'page2') {
+    page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+  }
+});
 
 
