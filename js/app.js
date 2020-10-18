@@ -66,7 +66,7 @@ document.addEventListener('init', function (event) {
     db.collection("movies").get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
         var item = `
-        <ons-carousel-item style="text-align: center;" id="${doc.data().title}" onclick="MoviesDetail(this.id)"> 
+        <ons-carousel-item style="text-align: center;" id="${doc.data().title}" onclick="moviesDetail(this.id)"> 
         <img src="${doc.data().posterURL}" style="width:100%;">
         </ons-carousel-item>`
         var onsItem = document.createElement('ons-carousel-item');
@@ -79,7 +79,11 @@ document.addEventListener('init', function (event) {
   }
 
   })
+  
 
+ 
+  
+  
   
   if (page.id === "home") {
     db.collection("toprate").get().then(function (querySnapshot) {
@@ -145,33 +149,125 @@ document.addEventListener('init', function (event) {
     });
 
   }
-
-
-  console.log(page.id);
-  if (page.id === 'Home') {
-    $('#back').hide();
-    page.querySelector('#johnwick').onclick = function () {
-      document.querySelector('#myNavigator').pushPage('views/detail.html');
-
-    };
-    page.querySelector('#wonderwoman').onclick = function () {
-      document.querySelector('#myNavigator').pushPage('views/detail2.html');
-    };
-    page.querySelector('#toystory').onclick = function () {
-      document.querySelector('#myNavigator').pushPage('views/detail3.html');
-    };
-  } else if (page.id === 'johnwick' || page.id === 'wonderwoman' || page.id === 'toystory') {
-    $('#back').show();
-    document.querySelector('ons-back-button').onclick = function (event) {
-      document.querySelector('#myNavigator').popPage();
-    };
-
-  }
-
-
 });
+  /*
+// movie_details.html
+function MoviesDetail(id) {
+  db.collection("movies").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      if (doc.data().title == id) {
+      
+
+        const show_pic =
+          `
+          <img src="${doc.data().posterURL}"alt="" width="60%">
+       
+        `
+        $("#show_pic").append(show_pic)
+
+        $("#movie_title").append(doc.data().title)
+        $("#movie_year").append(doc.data().year)
+        $(".movie_synopsis").append(doc.data().shortstory)
+        $(".movie_cast").append(doc.data().cast)
+        var s = doc.data().rating;
+        if (s < 5) {
+          const star = ` 
+         <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          ${s / 2}`
+          $(".stars").append(star)
+        } else if (5 < s && s < 7) {
+          const star = ` 
+         <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          ${s / 2}`
+          $(".stars").append(star)
+        } else if (7 < s && s < 9) {
+          const star = ` 
+         <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          ${s / 2}`
+          $(".stars").append(star)
+        } else if (9 < s && s < 10) {
+          const star = ` 
+         <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          <ons-icon style="color: red" icon="fa-star"></ons-icon>
+          ${s / 2}`
+          $(".stars").append(star)
+        }
+        $("#movie_time").append(doc.data().time)
+
+        db.collection("movies").get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const result5 =
+              `<ons-carousel-item modifier="nodivider" id="${doc.data().title}" >
+                <img src="${doc.data().posterURL}">
+              </ons-carousel-item>`
+      
+              $("#list-movie-similar").append(result5)
+            
+          });
+        });
+
+      }
 
 
+    });
+  });
+  document.querySelector('#myNavigator').pushPage('views/moviedetail.html');
+}
+
+function goBack() {
+
+  document.querySelector('#myNavigator').popPage()
+
+}*/
+
+
+
+function moviesDetail(id){
+  db.collection("movies").get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+     if(doc.data().title == id){
+          const result = `
+            <div class="text-center">
+            <img src="${doc.data().posterURL}" style="padding-top :20px; width:50%;">
+            </div>
+            <div class="container">
+                <div>
+                  <div style="color:#33ccff; font-size:20px; margin-top:10px;">
+                  <b> ${doc.data.title}</b></div>
+
+                  <div class="row" style="color: grey; font-size:16px; margin-top: 5px;">
+                      <div class="col-8">${doc.data().type}</div>
+                      <div class="col-8">${doc.data().detail}</div>
+                  
+                  </div>
+                  <div style ="color: white;font-size:16px; margin-top: 5px;">
+                  ${doc.data().shortstory}</div>
+                </div>
+            </div>
+          `
+          $("#moviedetail").append(result)
+     }
+      
+
+    });
+  });
+  document.querySelector('#myNavigator').pushPage('views/moviedetail.html');
+}
 
 
 
