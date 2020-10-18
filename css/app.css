@@ -107,10 +107,10 @@ background-color:black ;
 .form-container .btn {
   background-color: #4d4dff;
   color: white;
-  padding: 50px 50px;
+  padding: 30px 30px;
   border: none;
   cursor: pointer;
-  width: 197%;
+  width: 30%;
   margin-bottom:10px;
   opacity: 10;
 }
@@ -118,6 +118,7 @@ background-color:black ;
 /* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
+  width: 197%;
 }
 
 /* Add some hover effects to buttons */
