@@ -156,7 +156,50 @@ document.addEventListener('init', function (event) {
 function moviesDetail(id) {
   db.collection("movies").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
-      if (doc.data().title == id) {
+      var rate = doc.data().rating;
+      if (rate == 5) {
+        const star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          `
+        $(".stars").append(star)
+      } else if (rate == 4) {
+        const star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
+        $(".stars").append(star)
+      } else if (rate == 3) {
+        const star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
+        $(".stars").append(star)
+      } else if (rate == 2) {
+        const star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
+        $(".stars").append(star)
+      } else if (rate == 1) {
+        const star = ` 
+         <ons-icon style="color: black" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>
+          <ons-icon style="color: gray" icon="fa-star"></ons-icon>`
+        $(".stars").append(star)
+      }
+       else if (doc.data().title == id) {
         const result = `
             <div class="text-center">
             <img src="${doc.data().trailer}" style="padding-top :20px; width:100%; ">
@@ -166,10 +209,13 @@ function moviesDetail(id) {
                 <div style="color:black; font-size:30px; margin-top:10px; text-align: left;">
                   <b> ${doc.data().title}</b></div>
 
-                <div class="row" style="color: grey; font-size:16px; margin-top: 5px; text-align: left; display: flex;">
-                <div class="col-3" style="padding-right :10px;">${doc.data().year}</div>
-                <div class="col-3" style="padding-right :10px;" >${doc.data().type}</div>
-                <div class="col-3">${doc.data().time}</div>
+       
+
+               <div class="row" style="color: grey; font-size:16px; margin-top: 5px; text-align: left; display: flex;">
+                <div class="col-4" style="padding-right :10px;">`+star+`</div>
+                <div class="col-4" style="padding-right :10px;">${doc.data().year}</div>
+                <div class="col-4" style="padding-right :10px;" >${doc.data().type}</div>
+                <div class="col-4">${doc.data().time}</div>
           
                 </div>
           
@@ -189,18 +235,17 @@ function moviesDetail(id) {
         $("#moviedetail").append(result)
       }
 
-
     });
   });
   document.querySelector('#myNavigator').pushPage('views/moviedetail.html');
 }
 
-document.addEventListener('init', function(event) {
+document.addEventListener('init', function (event) {
   var page = event.target;
 
   if (page.id === 'page1') {
-    page.querySelector('#push-button').onclick = function() {
-      document.querySelector('#myNavigator').pushPage('index.html', {data: {title: 'Page 2'}});
+    page.querySelector('#push-button').onclick = function () {
+      document.querySelector('#myNavigator').pushPage('index.html', { data: { title: 'Page 2' } });
     };
   } else if (page.id === 'page2') {
     page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
