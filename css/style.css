@@ -165,7 +165,7 @@
     box-sizing: border-box;
     position: relative;
     margin: 0.2em;
-    padding: 0 15px 0 46px;
+    padding: 0 15px 0;
     border: none;
     text-align: left;
     line-height: 34px;
@@ -375,7 +375,7 @@
     position: absolute;
     top: 25%;
     color: white;
-    transition: opacity 0.4s;
+    transition: opacity 0.8s;
   }
 
   .post-button-bar {
