@@ -1,4 +1,5 @@
 <ons-page id="search">
+    
     <div class="tabbar tabbar--top tabbar--top-border">
         <label class="tabbar__item tabbar--top-border__item">
             <input type="radio" name="top-tabbar-b" checked="checked">
@@ -55,29 +56,29 @@ $("#search").click(function () {
 
     if (`${doc.data().star}`>4){
         var star = `
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>`
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
     }else if(`${doc.data().star}`>3){
         var star = `
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>`
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
     }else if(`${doc.data().star}`>2){
         var star = `
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>`
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
     }else if(`${doc.data().star}`>1){
         var star = `
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>`
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
     }else{
         var star = `
-        <ons-icon style="color: yellow" icon="fa-star"></ons-icon>`
+        <ons-icon style="color: red" icon="fa-star"></ons-icon>`
 
     }
  
@@ -100,12 +101,8 @@ $("#search").click(function () {
    
            <ons-col>
            <p style="font-size:18px">${doc.data().name} (${doc.data().years}) </p>
-           <p style="font-size:15px">`+ star +`${doc.data().plot}</p>
-           <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-            <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-            <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-            <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
-            <ons-icon style="color: yellow" icon="fa-star"></ons-icon>
+           <p style="font-size:15px">${doc.data().plot}</p>
+           <p style="font-size:15px">`+ star +`</p>
            </ons-col>
          
            </ons-row>`
