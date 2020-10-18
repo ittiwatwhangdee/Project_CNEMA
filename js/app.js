@@ -200,34 +200,28 @@ function moviesDetail(id) {
         const result = `
             <div class="text-center">
               <div class="trailer">
-            <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style="width: 100%;height: auto;"
-            data-setup="{}" muted>
-            <source src="${doc.data().vdo}" type="video/mp4" />
-            </div>
-            <div class="container">
-                <div> 
-                <div style="color:black; font-size:30px; margin-top:10px; text-align: left;">
-                <br>
-                  <b> ${doc.data().title}</b></div>
-                <div class="row" style="color: grey; font-size:16px; margin-top: 5px; text-align: left; display: flex;">
-                <div class="col-4" style="padding-right :10px;">`+ star + `</div>
-                <div class="col-4" style="padding-right :10px;">${doc.data().year}</div>
-                <div class="col-4" style="padding-right :10px;" >${doc.data().type}</div>
-                <div class="col-4">${doc.data().time}</div>
-                </div>
-                  <div style ="color: black;font-size:16px; margin-top: 5px; text-align: left;">
-                  ${doc.data().shortstory}</div> 
-                  
-                  <div style ="color: grey; font-size:14px; margin-top:10px; text-align: left;">
-                  <b>Cast: ${doc.data().cast}</b></div>
-                  
-                  <div style ="color: grey; font-size:14px; margin-top:10px; text-align: left;">
-                  <b>Director: ${doc.data().director}</b></div>
-                </div>
-            </div>
-          <br>
-            <div class="movie_list">
-        <b><p>Similar Movies</p></b>
+              <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style="width: 100%;height: auto;"
+              data-setup="{}" muted>
+              <source src="${doc.data().vdo}" type="video/mp4" />
+              </div>
+              <br>
+              <div class="movie_info">
+              <h1>${doc.data().title} (${doc.data().year})</h1>
+              <ons-row class="movie_general_info">
+              <ons-col class="stars">
+              <div class="col-4" style="padding-right :10px;">`+ star + `</div>
+              </ons-col>
+              <ons-col>${doc.data().type}   l    ${doc.data().time}</ons-col>
+              </ons-row>
+              <div class="movie_synopsis">${doc.data().shortstory}</div>
+        <div class="movie_cast">
+        Cast: ${doc.data().cast} <br />
+        Director: ${doc.data().director}
+        </div>
+    </div>
+    <br><br>
+    <div class="movie_list">
+        Similar Movies
         <ons-carousel auto-refresh swipeable overscrollable item-width="110px">
             <ons-carousel-item modifier="nodivider">
                 <img src="assets/img/Avatar2.jpg">
@@ -245,9 +239,8 @@ function moviesDetail(id) {
                 <img src="assets/img/Extraction.jpg">
             </ons-carousel-item>
         </ons-carousel>
-    </div>
-
-          `
+    </div>  `
+    
         $("#moviedetail").append(result)
       }
 
