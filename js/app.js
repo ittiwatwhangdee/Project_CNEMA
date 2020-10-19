@@ -206,7 +206,9 @@ function moviesDetail(id) {
               </div>
               <br>
               <div class="movie_info">
-              <h1>${doc.data().title} (${doc.data().year})</h1>
+              <h1>${doc.data().title} (${doc.data().year})
+              <ons-button class="post-button" modifier="quiet"><ons-icon icon="md-download"></ons-icon></ons-button>
+              </h1>
               <ons-row class="movie_general_info">
               <ons-col class="stars">
               <div class="col-4" style="padding-right :10px;">`+ star + `</div>
